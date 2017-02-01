@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capistrano-config_files_deploy'
+gem 'capistrano-config-files-deploy'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install capistrano-config_files_deploy
+    $ gem install capistrano-config-files-deploy
 
 ## Usage
 
