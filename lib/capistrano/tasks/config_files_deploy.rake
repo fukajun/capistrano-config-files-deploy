@@ -15,14 +15,14 @@ namespace :config_files do
       if test "[ -e #{config_repo_path} ]"
         execute 'rm', '-rf', config_repo_path
       end
-      execute 'git', 'clone', fetch(:config_git_url), config_repo_path
+      execute 'git', 'clone', fetch(:config_files_git_url), config_repo_path
     end
   end
 
   task :checkout_revision do
     on roles(fetch(:config_files_roles) do |host|
       fetch(:config_files).each do |source_path, dest_path|
-        execute 'git', '-C', config_repo_path, 'checkout', fetch(:config_git_revision)
+        execute 'git', '-C', config_repo_path, 'checkout', fetch(:config_files_git_revision)
       end
     end
 
