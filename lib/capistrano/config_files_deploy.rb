@@ -1,7 +1,3 @@
 require "capistrano/config_files_deploy/version"
-
-module Capistrano
-  module ConfigFilesDeploy
-    # Your code goes here...
-  end
-end
+require "capistrano/config_files_deploy/helpers"
+load File.expand_path("../tasks/config_files_deploy.rake", __FILE__)
