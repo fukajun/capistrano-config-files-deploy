@@ -11,7 +11,7 @@ set_if_empty :config_files_roles, :all
 namespace :config_files do
   desc 'Download config files from remote git repository'
   task :download do
-    on roles(fetch(:config_files_roles) do |host|
+    on roles(fetch(:config_files_roles)) do |host|
       if test "[ -e #{config_repo_path} ]"
         execute 'rm', '-rf', config_repo_path
       end
@@ -20,14 +20,15 @@ namespace :config_files do
   end
 
   task :checkout_revision do
-    on roles(fetch(:config_files_roles) do |host|
+    on roles(fetch(:config_files_roles)) do |host|
       fetch(:config_files).each do |source_path, dest_path|
         execute 'git', '-C', config_repo_path, 'checkout', fetch(:config_files_git_revision)
       end
     end
+  end
 
   task :copy_files do
-    on roles(fetch(:config_files_roles) do |host|
+    on roles(fetch(:config_files_roles)) do |host|
       fetch(:config_files).each do |source_path, dest_path|
         execute 'cp', '-f', "#{config_repo_path}/#{source_path}", "#{release_path}/#{dest_path}"
       end
@@ -35,7 +36,7 @@ namespace :config_files do
   end
 
   task :remove_tmp_files do
-    on roles(fetch(:config_files_roles) do |host|
+    on roles(fetch(:config_files_roles)) do |host|
       execute 'rm', '-rf', config_repo_path
     end
   end
