@@ -31,7 +31,7 @@ require "capistrano/config_files_deploy"
 Setting config/deploy.rb
 
 ```ruby
-set :config_files_git_url, ENV['RADIKO_SECRET_GIT_URL']
+set :config_files_git_url, git@github.com:username/path-to-private-repository
 set :config_files_revision, 'v1.2.0'
 set :config_files, { 'config/env.production' => '.env.production' }
 ```
